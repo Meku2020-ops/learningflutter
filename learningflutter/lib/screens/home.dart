@@ -14,7 +14,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<CategoryModel> getCategories2 = [];
   void _getCategories() {
-    getCategories2 = CategoryModel.categories;
+    setState(() {
+      getCategories2 = CategoryModel.getCategories();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getCategories();
   }
 
   @override
@@ -43,12 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 20),
             Container(
               height: 150,
-              color: Colors.green,
+
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: getCategories2.length,
                 itemBuilder: (context, index) {
-                  return Container();
+                  return Container(
+                    height: 50,
+                    width: 50,
+
+                    decoration: BoxDecoration(
+                      color: getCategories2[index].boxColor,
+                    ),
+                  );
                 },
               ),
             ),

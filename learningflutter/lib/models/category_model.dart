@@ -12,7 +12,7 @@ class CategoryModel {
     required this.boxColor,
     required this.iconPath,
   });
-  List<CategoryModel> getCategories() {
+  static List<CategoryModel> getCategories() {
     categories.add(
       CategoryModel(
         name: 'Hotdog',
